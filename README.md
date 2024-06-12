@@ -87,5 +87,5 @@ The React frontend should now be running on `http://localhost:3000`.
 
 ![Login Page](docs/loginpage.png)
 ![Home Page](docs/homepage.png)
-![Logout Page](docs/homelogout.png)
-![Spring boot](docs/springboot.png)
+![Logout Page](docs/homelogout)
+![Spring boot](docs/springboot)
