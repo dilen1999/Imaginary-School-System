@@ -6,6 +6,7 @@ The Imaginary School System is a web application designed to manage student atte
 
 - Java
 - Spring Boot
+- React
 - Spring Security
 - Spring Data JPA
 - JWT (JSON Web Tokens)
@@ -22,9 +23,9 @@ The Imaginary School System is a web application designed to manage student atte
 Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/dilen1999/Imaginary-School-System.git
+git clone https://github.com/dilen1999/Imaginary-School-System
 Navigate to the Project Directory
-cd Imaginary-School-System
+cd server
 Set Up the Project
 Open the project in your preferred IDE (e.g., IntelliJ IDEA, Eclipse).
 Maven will automatically download the required dependencies.
@@ -67,13 +68,26 @@ Use the following credentials to test the login endpoint:
 Username: admin
 Password: password
 
+### Frontend (React)
+
+#### Prerequisites
+- Node.js installed
+
+2. Navigate to the client directory:
+
+3. Install dependencie using : npm i
+
+4. Start the development server: npm start
+
+   
+The React frontend should now be running on `http://localhost:3000`.
+
 
 ## Screenshots
 
-User name : username
-Password : password
 
 ![Login Page](docs/loginpage.png)
 ![Home Page](docs/homepage.png)
 ![Logout Page](docs/homelogout.png)
+![Back end Page](docs/springboot.png)
 ```
