@@ -1,4 +1,4 @@
-/* General Styles */
+
 body, html, div, form, input, button, label, nav, a, h1, p {
   margin: 0;
   padding: 0;
@@ -6,7 +6,7 @@ body, html, div, form, input, button, label, nav, a, h1, p {
   font-family: Arial, sans-serif;
 }
 
-/* Styles for App */
+
 .App {
   text-align: center;
 }
@@ -158,4 +158,10 @@ body, html, div, form, input, button, label, nav, a, h1, p {
 
 .content p {
   font-size: 20px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }

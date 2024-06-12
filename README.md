@@ -45,6 +45,9 @@ The Spring Boot backend should now be running on `http://localhost:8080`.
 
 ## Screenshots
 
+User name : username
+Password : password
+
 ![Login Page](docs/loginpage.png)
 ![Home Page](docs/homepage.png)
 ![Logout Page](docs/homelogout.png)
