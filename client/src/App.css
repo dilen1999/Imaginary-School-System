@@ -1,11 +1,19 @@
-
-body, html, div, form, input, button, label, nav, a, h1, p {
+body,
+html,
+div,
+form,
+input,
+button,
+label,
+nav,
+a,
+h1,
+p {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
-
 
 .App {
   text-align: center;
@@ -109,7 +117,7 @@ body, html, div, form, input, button, label, nav, a, h1, p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #CD7DEF;
+  background-color: #cd7def;
   padding: 15px 30px;
   color: white;
 }
@@ -127,7 +135,7 @@ body, html, div, form, input, button, label, nav, a, h1, p {
 }
 
 .top-bar-right .logout-button {
-  background-color: #6E1DBF;
+  background-color: #6e1dbf;
   border: none;
   padding: 15px 30px;
   color: white;
@@ -139,7 +147,7 @@ body, html, div, form, input, button, label, nav, a, h1, p {
 }
 
 .top-bar-right .logout-button:hover {
-  background-color: #8D59C1;
+  background-color: #8d59c1;
 }
 
 .content {
@@ -165,3 +173,12 @@ body, html, div, form, input, button, label, nav, a, h1, p {
   font-size: 14px;
   margin-top: 5px;
 }
+
+.contentimage {
+  padding: 20px;
+  background-size: cover; 
+  background-position: center;
+  height: calc(100vh - 60px); 
+  color: white; 
+  text-align: center; 
+} 

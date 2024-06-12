@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+// import img1 from "../images/welcomimg.png";
 import "../App.css";
 
 function Home() {
@@ -13,7 +14,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div >
       <nav className="top-bar">
         <div className="top-bar-left">
           <a href="#home">Home</a>

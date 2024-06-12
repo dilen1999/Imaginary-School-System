@@ -2,46 +2,71 @@
 
 The Imaginary School System is a web application designed to manage student attendance efficiently. It features secure JWT authentication for user login and logout functionality. Upon login, users are directed to a dashboard where they can track and record student attendance for classes. Role-based access control ensures appropriate permissions for teachers, administrators, and staff. The system provides reporting capabilities to analyze attendance trends and support decision-making for student success.
 
+## Technologies Used
 
-## Setup and Installation
+- Java
+- Spring Boot
+- Spring Security
+- Spring Data JPA
+- JWT (JSON Web Tokens)
 
-1. Clone the repository: https://github.com/dilen1999/Imaginary-School-System
+## Prerequisites
 
+- Java 17 or higher installed on your machine
+- Maven installed on your machine
 
-### Frontend (React)
+## Getting Started
 
-#### Prerequisites
-- Node.js installed
+### Clone the Repository
 
-2. Navigate to the client directory:
+Clone this repository to your local machine:
 
-3. Install dependencie using : npm i
+```bash
+git clone https://github.com/dilen1999/Imaginary-School-System.git
+Navigate to the Project Directory
+cd Imaginary-School-System
+Set Up the Project
+Open the project in your preferred IDE (e.g., IntelliJ IDEA, Eclipse).
+Maven will automatically download the required dependencies.
+Configuration
+By default, the application uses in-memory storage for users. Ensure the application.properties file contains the following configurations:
+# Disable data source auto-configuration if no database is needed
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
+# JWT Configuration
+app.jwt.secret=your_jwt_secret_key
+app.jwt.expiration=3600
 
-### Backend (Spring Boot)
+# Server Configuration
+server.port=8080
 
-#### Prerequisites
-- Java JDK installed
-- Maven installed (for building the project)
+# Logging Configuration
+logging.level.org.springframework=DEBUG
+logging.level.root=DEBUG
 
-2. Navigate to the server directory:
+Running the Application
+You can run the application using the Maven command:
+mvn spring-boot:run
 
-3. Install dependencies (if using Maven):
+##Accessing the Endpoints
+Once the application is running, you can access the endpoints using a REST client like Postman or any HTTP client library.
+API Endpoints
+Login: POST /api/auth/login
+Request Body:
+{
+  "username": "admin",
+  "password": "password"
+}
+Response
+{
+  "jwt": "your_jwt_token"
+}
 
-## Running the Application
+##Testing Credentials
+Use the following credentials to test the login endpoint:
+Username: admin
+Password: password
 
-### Frontend (React)
-
-1. Start the development server: npm start
-
-   
-The React frontend should now be running on `http://localhost:3000`.
-
-### Backend (Spring Boot)
-
-1. Run the Spring Boot application:
-   
-The Spring Boot backend should now be running on `http://localhost:8080`.
 
 ## Screenshots
 
@@ -51,3 +76,4 @@ Password : password
 ![Login Page](docs/loginpage.png)
 ![Home Page](docs/homepage.png)
 ![Logout Page](docs/homelogout.png)
+```
