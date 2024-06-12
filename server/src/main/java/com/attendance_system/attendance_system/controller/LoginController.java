@@ -2,11 +2,12 @@ package com.attendance_system.attendance_system.controller;
 
 import com.attendance_system.attendance_system.dto.UserLoginRequest;
 import com.attendance_system.attendance_system.response.AuthResponse;
-import com.attendance_system.attendance_system.service.UserService;
 import com.attendance_system.attendance_system.security.JwtUtil;
+import com.attendance_system.attendance_system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -26,12 +27,12 @@ public class LoginController {
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody UserLoginRequest loginRequest) throws AuthenticationException {
-        authenticationManager.authenticate(
+        Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
         );
 
-        final UserDetails userDetails = userService.loadUserByUsername(loginRequest.getUsername());
-        final String jwt = jwtUtil.generateToken(userDetails);
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String jwt = jwtUtil.generateToken(userDetails.getUsername());
 
         return new AuthResponse(jwt);
     }

@@ -1,4 +1,3 @@
-
 package com.attendance_system.attendance_system.response;
 
 import lombok.AllArgsConstructor;
@@ -9,6 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthResponse {
-
     private String jwt;
 }

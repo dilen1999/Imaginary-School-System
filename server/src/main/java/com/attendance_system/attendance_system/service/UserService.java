@@ -1,43 +1,46 @@
 package com.attendance_system.attendance_system.service;
 
-import com.attendance_system.attendance_system.model.User;
-import com.attendance_system.attendance_system.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.User;
+
+import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private Map<String, String> users = new HashMap<>();
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
+    @PostConstruct
+    public void init() {
+        try {
+            Path path = Path.of("src/main/resources/users.txt");
+            Files.lines(path).forEach(line -> {
+                String[] parts = line.split(":");
+                if (parts.length == 2) {
+                    users.put(parts[0], parts[1]);
+                }
+            });
+        } catch (IOException e) {
+            throw new RuntimeException("Could not read users file", e);
         }
-        return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getUsername())
-                .password(user.getPassword())
-                .roles("USER") // You can customize roles as per your requirements
-                .build();
     }
 
     public boolean isValidUser(String username, String password) {
-        User user = userRepository.findByUsername(username);
-        return user != null && passwordEncoder.matches(password, user.getPassword());
+        return users.containsKey(username) && users.get(username).equals(password);
     }
 
-    public void save(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+    public UserDetails loadUserByUsername(String username) {
+        String password = users.get(username);
+        if (password == null) {
+            throw new UsernameNotFoundException("User not found: " + username);
+        }
+        return User.withUsername(username).password(password).authorities("USER").build();
     }
 }
