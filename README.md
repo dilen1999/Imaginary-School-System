@@ -43,3 +43,8 @@ The React frontend should now be running on `http://localhost:3000`.
    
 The Spring Boot backend should now be running on `http://localhost:8080`.
 
+## Screenshots
+
+![Login Page](docs/loginpage.png)
+![Home Page](docs/homepage.png)
+![Logout Page](docs/homelogout.png)
