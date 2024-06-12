@@ -1,15 +1,21 @@
+// src/client/Login.js
 import React, { useState } from 'react';
-import '../App.css'; // Make sure to import the CSS file
+import { useNavigate } from 'react-router-dom';
+import '../App.css';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleLogin = (e) => {
     e.preventDefault();
     // Handle login logic here
     console.log('Username:', username);
     console.log('Password:', password);
+
+    // If login is successful, navigate to Home
+    navigate('/Home');
   };
 
   return (
